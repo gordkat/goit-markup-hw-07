@@ -1,0 +1,33 @@
+.customers-list {
+  display: flex;
+}
+
+.customers-list-item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.customers-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 90px;
+  border: 1px solid $icon-fill;
+  border-radius: 4px;
+  transition: border-color 250ms $timing-function;
+}
+
+.customers-svg {
+  fill: $icon-fill;
+  transition: fill 250ms $timing-function;
+}
+
+.customers-link:hover,
+.customers-link:focus {
+  border-color: $accent-color;
+}
+
+.customers-link:hover .customers-svg,
+.customers-link:focus .customers-svg {
+  fill: $accent-color;
+}

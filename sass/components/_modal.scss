@@ -1,0 +1,200 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $background-color-backdrop;
+  opacity: 1;
+  transition: opacity 500ms ease, visibility 500ms ease;
+
+  &.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 500ms ease 250ms, visibility 500ms ease 250ms;
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 40px;
+  width: 528px;
+  height: 581px;
+  background-color: $secondary-text-color-dark-theme;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 500ms ease 250ms;
+
+  .backdrop.is-hidden & {
+    transform: translate(-50%, -50%) scale(1.1);
+    transition: transform 500ms ease;
+  }
+
+  &-title {
+    margin-bottom: 12px;
+    @include font-style(
+      $main-font,
+      $font-weight-bold,
+      20px,
+      23px,
+      $letter-spacing-text,
+      $title-color
+    );
+    text-align: center;
+  }
+
+  &-form-btn {
+    align-self: center;
+  }
+}
+
+.close-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  background-color: $secondary-text-color-dark-theme;
+  cursor: pointer;
+
+  &-svg {
+    fill: $secondary-text-color-light-theme;
+    transition: fill 250ms $timing-function;
+  }
+
+  &:hover &-svg,
+  &:focus &-svg {
+    fill: $accent-color;
+  }
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+
+  &-label-input {
+    margin-bottom: 10px;
+    @include font-style(
+      $main-font,
+      $font-weight-normal,
+      12px,
+      14px,
+      0.01em,
+      $primary-text-color
+    );
+  }
+
+  &-input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+    padding-left: 42px;
+    transition: border-color 250ms $timing-function;
+  }
+
+  &-input:focus,
+  &-message:focus {
+    outline: none;
+    border-color: $accent-color;
+  }
+
+  &-field-wrapper {
+    position: relative;
+    display: block;
+    margin-top: 4px;
+  }
+
+  &-label-message {
+    margin-bottom: 20px;
+    @include font-style(
+      $main-font,
+      $font-weight-normal,
+      12px,
+      14px,
+      0.01em,
+      $primary-text-color
+    );
+  }
+
+  &-message {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 12px 16px;
+    resize: none;
+    height: 120px;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+    transition: border-color 250ms $timing-function;
+  }
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    fill: $title-color;
+    transition: fill 250ms $timing-function;
+
+    .modal-form-input:focus + & {
+      fill: $accent-color;
+    }
+  }
+
+  &-message::placeholder {
+    @include font-style(
+      $main-font,
+      $font-weight-normal,
+      12px,
+      14px,
+      0.01em,
+      $placeholder-text-color
+    );
+  }
+
+  &-label-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    @include font-style(
+      $main-font,
+      $font-weight-normal,
+      $font-size-text,
+      $line-height-text,
+      $letter-spacing-text,
+      $primary-text-color
+    );
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 15px;
+      border-radius: 2px;
+      border: 2px solid $title-color;
+      margin-right: 7px;
+
+      .modal-form-terms:checked + & {
+        background-color: $accent-color;
+        border-color: $accent-color;
+        background-image: url(../images/studia/check.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-origin: border-box;
+      }
+    }
+  }
+
+  &-terms-link {
+    color: $accent-color;
+  }
+}

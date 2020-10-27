@@ -1,0 +1,23 @@
+.logo-web {
+  display: block;
+  @include font-style(
+    $logo-font,
+    $font-weight-bold,
+    26px,
+    31px,
+    $letter-spacing-text,
+    $accent-color
+  );
+
+  .header & {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+
+.logo-studio-light-theme {
+  color: $secondary-text-color-light-theme;
+}
+.logo-studio-dark-theme {
+  color: $secondary-text-color-dark-theme;
+}

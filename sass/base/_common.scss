@@ -35,4 +35,14 @@ img {
   width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+
+  .header & {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer & {
+    display: flex;
+    align-items: baseline;
+  }
 }
